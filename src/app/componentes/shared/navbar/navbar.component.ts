@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { LogService } from '../../../servicios/log.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor( private _logService:LogService, private _router:Router) { }
 
   ngOnInit() {
+  }
+
+  sesionActiva():boolean{
+    return this._logService.sesionValida();
+  }
+
+  esAdmin():boolean{
+    return this._logService.esAdmin();
+  }
+
+  desconectarse(){
+    this._logService.cerrarSesion();
+    this._router.navigate(['/home']);
   }
 
 }
