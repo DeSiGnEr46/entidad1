@@ -7,7 +7,7 @@ import { BehaviorSubject } from 'rxjs';
 @Injectable()
 export class LogService {
 
-  apptime: string = "https://apitfm.azurewebsites.net/Entidad1/";
+  apptime: string = "https://apitfm.azurewebsites.net/api/Entidad1/";
   logObservable: BehaviorSubject<boolean>;
 
   constructor(private http: HttpClient) {
@@ -20,7 +20,7 @@ export class LogService {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
-    let url = this.apptime + "usuarios/save";
+    let url = this.apptime + "/Save";
     return this.http.post(url, body, { headers, observe: 'response' }).pipe(
       map(resp => {
         console.log(resp);
@@ -34,7 +34,7 @@ export class LogService {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
-    let url = `${this.apptime}usuarios/log`;
+    let url = `${this.apptime}Log`;
 
     return this.http.post(url, body, { headers, observe: 'response' })
       .pipe(
