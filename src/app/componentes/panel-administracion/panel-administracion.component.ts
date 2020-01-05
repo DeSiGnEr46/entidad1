@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { UsuariosService } from '../../servicios/usuarios.service';
+import { Usuario } from '../../interfaces/usuario.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-panel-administracion',
@@ -7,9 +10,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PanelAdministracionComponent implements OnInit {
 
-  constructor() { }
+  searchText: String;
+  usuarios: Usuario[];
+
+  constructor(private _usuariosService: UsuariosService, private _router: Router) {
+    _usuariosService.obtenerUsuarios().subscribe((datos) => {
+      this.usuarios = datos;
+      console.log(datos);
+    })
+  }
 
   ngOnInit() {
   }
 
+  buscar(): any {
+    this._usuariosService.buscarUsuario(this.searchText).subscribe((datos) => {
+      this.usuarios = datos;
+      console.log(datos);
+    })
+  }
+
+  todos(): any {
+    this._usuariosService.obtenerUsuarios().subscribe( datos => {
+      this.usuarios = datos;
+    })
+  }
 }

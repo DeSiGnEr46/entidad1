@@ -13,9 +13,10 @@ import { PerfilComponent } from './componentes/perfil/perfil.component';
 import { EditarUsuarioComponent } from './componentes/editar-usuario/editar-usuario.component';
 import { EliminarUsuarioComponent } from './componentes/eliminar-usuario/eliminar-usuario.component';
 
-import {LogService} from './servicios/log.service';
+import { LogService } from './servicios/log.service';
 import { AuthGuardService } from './servicios/auth-guard.service';
 import { AdminGuardService } from './servicios/admin-guard.service';
+import { UsuariosService } from './servicios/usuarios.service';
 
 import { APP_ROUTING } from './app.routes';
 import { NavbarComponent } from './componentes/shared/navbar/navbar.component';
@@ -48,7 +49,8 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
   providers: [
     LogService,
     AuthGuardService,
-    AdminGuardService
+    AdminGuardService,
+    UsuariosService
   ],
   bootstrap: [AppComponent],
   schemas: [NO_ERRORS_SCHEMA]

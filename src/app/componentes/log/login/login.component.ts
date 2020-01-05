@@ -69,11 +69,16 @@ export class LoginComponent implements OnInit {
 
     this._logService.conectarse(this.datos)
       .subscribe(resp => {
+        console.log(resp);
         this._router.navigate(['/home']);
       },
         error => {
           this._logService.logObservable.next(false);
           console.log(error);
+          if(error.error.text != null){
+            this._logService.crearSesion(error.error.text);
+            this._router.navigate(['/home']);
+          }
         }
       );
   }

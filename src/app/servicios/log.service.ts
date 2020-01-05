@@ -32,16 +32,17 @@ export class LogService {
   conectarse(datos: Usuario): any {
     let body = JSON.stringify(datos);
     let headers = new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*'
     });
     let url = `${this.apptime}Log`;
 
     return this.http.post(url, body, { headers, observe: 'response' })
       .pipe(
         map(resp => {
-          if (resp.ok) {
-            this.crearSesion(resp.body);
-          }
+          // if (resp.ok) {
+          //   this.crearSesion(resp.body);
+          // }
           return resp;
         })
       )
