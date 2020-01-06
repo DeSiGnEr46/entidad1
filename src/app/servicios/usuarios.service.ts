@@ -22,7 +22,7 @@ export class UsuariosService {
     let body = JSON.stringify(datos);
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': "Bearer " + localStorage.getItem("Token"),
+      'Authorization': "Bearer " + localStorage.getItem("Ent1-token"),
       'Access-Control-Allow-Origin': '*'
     });
     let url = `${this.apptime}${method}`;
@@ -43,7 +43,7 @@ export class UsuariosService {
     let body = JSON.stringify(datos);
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': "Bearer " + localStorage.getItem("Token")
+      'Authorization': "Bearer " + localStorage.getItem("Ent1-token")
     });
     let url = `${this.apptime}Del`;
     
@@ -59,7 +59,7 @@ export class UsuariosService {
     let body = JSON.stringify(datos);
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${localStorage.getItem("Token")}`,
+      'Authorization': `Bearer ${localStorage.getItem("Ent1-token")}`,
       'Access-Control-Allow-Origin': '*'
     });
     let url = `${this.apptime}${method}`;
@@ -72,7 +72,7 @@ export class UsuariosService {
 
   obtenerUsuarios(): any {
     let headers = new HttpHeaders({
-      'Authorization': `Bearer ${localStorage.getItem("Token")}`
+      'Authorization': `Bearer ${localStorage.getItem("Ent1-token")}`
     });
     let url = `${this.apptime}GetAll`;
     return this.http.get(url, { headers, observe: 'response' }).pipe(
@@ -87,7 +87,7 @@ export class UsuariosService {
 
   buscarUsuario(texto: String): any {
     let headers = new HttpHeaders({
-      'Authorization': `Bearer ${localStorage.getItem("Token")}`
+      'Authorization': `Bearer ${localStorage.getItem("Ent1-token")}`
     });
     let url = `${this.apptime}Name/${texto}`;
     return this.http.get(url, { headers, observe: 'response'}).pipe(
@@ -102,7 +102,7 @@ export class UsuariosService {
 
   buscarUsuarioId(id: String): any {
     let headers = new HttpHeaders({
-      'Authorization': `Bearer ${localStorage.getItem("Token")}`
+      'Authorization': `Bearer ${localStorage.getItem("Ent1-token")}`
     });
     let url = `${this.apptime}Get/${id}`;
     return this.http.get(url, { headers, observe : 'response'}).pipe(

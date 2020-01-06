@@ -5,7 +5,7 @@
         <h2 class="card-title h1-responsive pt-3 mb-5 font-bold" *ngIf="sesionActiva()"><strong>Bienvenido {{Nombre}}</strong></h2>
         <p class="mx-5 mb-5">Aún está por definir el papel que esta entidad tendrá.
         </p>
-        <a class="btn btn-outline-white btn-md" *ngIf="!sesionActiva()" [routerLink]="['/login']"><i class="fas fa-clone left"></i> Inicia Sesión!</a>
+        <a class="btn btn-light" *ngIf="!sesionActiva()" [routerLink]="['/login']">Inicia Sesión!</a>
       </div>
     </div>
   </div>

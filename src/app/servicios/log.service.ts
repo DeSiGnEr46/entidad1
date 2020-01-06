@@ -74,7 +74,7 @@ export class LogService {
     let tokenString = token.toString();
 
     //Almacenamos la información en el almacenamiento local
-    localStorage.setItem("Token", tokenString);
+    localStorage.setItem("Ent1-token", tokenString);
     localStorage.setItem("Nombre", tokenJson.Nombre);
     localStorage.setItem("Correo", tokenJson.Correo);
     localStorage.setItem("Id", tokenJson.Id);
@@ -84,7 +84,7 @@ export class LogService {
 
   //Función que borra la información del usuario del almacenamiento local
   cerrarSesion(): void {
-    localStorage.removeItem("Token");
+    localStorage.removeItem("Ent1-token");
     localStorage.removeItem("Nombre");
     localStorage.removeItem("Correo");
     localStorage.removeItem("Id");
