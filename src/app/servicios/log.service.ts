@@ -20,7 +20,7 @@ export class LogService {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
-    let url = this.apptime + "/Save";
+    let url = this.apptime + "Save";
     return this.http.post(url, body, { headers, observe: 'response' }).pipe(
       map(resp => {
         console.log(resp);
@@ -58,7 +58,7 @@ export class LogService {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
-    let url = `${this.apptime}usuarios/existe`;
+    let url = `${this.apptime}Existe`;
 
     return this.http.post(url, body, { headers, observe: 'response'})
       .pipe(

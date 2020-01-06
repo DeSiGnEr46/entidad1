@@ -47,10 +47,10 @@
                             <td>{{ user.correo }}</td>
                             <td>{{ user.permisos }} </td>
                             <td>
-                                <a class="btn btn-unique waves-light rounded purple-grad" [routerLink]="['/editar', user.Id]" mdbWavesEffect>Editar</a>
+                                <a class="btn btn-unique waves-light rounded purple-grad" [routerLink]="['/editar', user.id]" mdbWavesEffect>Editar</a>
                             </td>
                             <td>
-                                <a class="btn btn-unique waves-light rounded danger-grad" [routerLink]="['/eluser', user.Id]" mdbWavesEffect>Eliminar</a>
+                                <a class="btn btn-unique waves-light rounded danger-grad" [routerLink]="['/eluser', user.id]" mdbWavesEffect>Eliminar</a>
                             </td>
                         </tr>
                     </tbody>

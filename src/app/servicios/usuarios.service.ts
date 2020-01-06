@@ -18,13 +18,14 @@ export class UsuariosService {
     this.passObservable = new BehaviorSubject<boolean>(null);
   }
 
-  editarDatos(datos: any): any {
+  editarDatos(datos: any, method: string): any {
     let body = JSON.stringify(datos);
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': "Bearer " + localStorage.getItem("Token")
+      'Authorization': "Bearer " + localStorage.getItem("Token"),
+      'Access-Control-Allow-Origin': '*'
     });
-    let url = `${this.apptime}/Edit`;
+    let url = `${this.apptime}${method}`;
     return this.http.post(url, body, { headers, observe: 'response' }).pipe(
       map(resp => {
         console.log(resp);
@@ -34,15 +35,17 @@ export class UsuariosService {
 
   eliminarUsuario(id: any): any {
     let datos = {
-      Id: id
+      Id: +id
     }
+
+    console.log(datos);
 
     let body = JSON.stringify(datos);
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': "Bearer " + localStorage.getItem("Token")
     });
-    let url = `${this.apptime}/Del`;
+    let url = `${this.apptime}Del`;
     
     return this.http.post(url, body, { headers, observe: 'response'}).pipe(
       map(resp => {
@@ -52,13 +55,14 @@ export class UsuariosService {
     )
   }
 
-  cambiarPass(datos: any): any {
+  cambiarPass(datos: any, method: string): any {
     let body = JSON.stringify(datos);
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${localStorage.getItem("Token")}`
+      'Authorization': `Bearer ${localStorage.getItem("Token")}`,
+      'Access-Control-Allow-Origin': '*'
     });
-    let url = `${this.apptime}Changep`;
+    let url = `${this.apptime}${method}`;
     return this.http.post(url, body, { headers, observe: 'response' }).pipe(
       map(resp => {
         console.log(resp);
