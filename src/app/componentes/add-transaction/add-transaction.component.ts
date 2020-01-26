@@ -30,6 +30,7 @@ export class AddTransactionComponent implements OnInit {
       'key': new FormControl(
         '', [
         Validators.required,
+        this.noVacio
       ]),
       'producto': new FormControl(
         ''),
@@ -56,7 +57,9 @@ export class AddTransactionComponent implements OnInit {
       'origen': new FormControl(
         'Org1'),
       'dst': new FormControl(
-        ''),
+        '', [
+          Validators.required
+        ]),
       'ordenante': new FormControl(
         localStorage.getItem('Nombre')),
       'fecha_env': new FormControl(
@@ -80,11 +83,11 @@ export class AddTransactionComponent implements OnInit {
     this._blockService.submitObservable.next(null);
     this.submitSusc.unsubscribe();
   }
-  
-  reload(){
+
+  reload() {
     console.log(this.addTrans.controls['channel'].value);
-    this._blockService.getLastKey(this.addTrans.controls['channel'].value.trim()).subscribe( key => {
-      this.addTrans.controls['key'].setValue( (+key.response + 1).toString() );
+    this._blockService.getLastKey(this.addTrans.controls['channel'].value.trim()).subscribe(key => {
+      this.addTrans.controls['key'].setValue((+key.response + 1).toString());
     })
   }
 
@@ -116,6 +119,18 @@ export class AddTransactionComponent implements OnInit {
         this._blockService.submitObservable.next(false);
         console.log(error);
       })
+  }
+
+  /*******************************
+  Funciones de validación extras
+  ********************************/
+  noVacio(control: FormControl): { [s: string]: boolean } { //Devuelve un string seguido de un valor booleano
+    if (typeof control.value === 'string' && !control.value.trim()) {
+      return {
+        novacio: true
+      }
+    }
+    return null;
   }
 
 }
